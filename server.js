@@ -5,13 +5,15 @@ const bodyParser = require('body-parser');
 const nodemailer = require('nodemailer')
 const mongoose =  require('mongoose')
 const blogRoutes = require('./routes/blog')
-
+const serviceRoutes = require('./routes/service.js');
 require('dotenv').config();
 const app = express();
 app.use(cors({origin: "https://next-tog-final.vercel.app",
   methods: ['GET', 'POST', 'PUT', 'DELETE'],
   credentials: true
 }));
+app.use(express.urlencoded({extended: true}));
+app.use('/api/services', serviceRoutes);
 app.use(express.json());
 app.use('/uploads', express.static('uploads'));
 app.use('/api/blogs', blogRoutes);
