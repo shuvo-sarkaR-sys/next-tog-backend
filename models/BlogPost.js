@@ -6,6 +6,7 @@ const blogPostSchema = new mongoose.Schema({
   date: {type: Date, default: Date.now},
   description: { type: String, required: true },
   imageUrl: { type: String, required: true }, // URL or path
+  imagePublicId: {type: String, require: true}
    
 });
 
